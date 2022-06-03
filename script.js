@@ -4,24 +4,23 @@ function capturar(){
         this.plata=plata;
     }
     let nombreCapturar = document.getElementById("nombreAmigo").value;
-    let plataCapturar = document.getElementById("plataGastada").value;
+    let plataCapturar = parseFloat(document.getElementById("plataGastada").value);
 
     nuevoAmigo = new Persona(nombreCapturar, plataCapturar);
     
     agregar();
 }
 
-let baseAmigos = [];
+var baseAmigos = [];
 
 function agregar(){
     baseAmigos.push(nuevoAmigo);
     document.getElementById("tabla-datos").innerHTML += '<tr><td>' + nuevoAmigo.nombre + ' - ' + nuevoAmigo.plata + '</td></tr>';
-
-    let suma = '';
+    
+    let suma = 0;
 
     for(let plataTotal of nuevoAmigo.plata){
         suma += plataTotal;
+        document.getElementById("total").innerHTML += suma;
     }
-
-    document.getElementById("total").innerHTML += suma;
 }
