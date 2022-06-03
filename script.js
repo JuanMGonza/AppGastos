@@ -11,16 +11,18 @@ function capturar(){
     agregar();
 }
 
-var baseAmigos = [];
+var listaAmigos = [];
 
 function agregar(){
-    baseAmigos.push(nuevoAmigo);
+    listaAmigos.push(nuevoAmigo); 
     document.getElementById("tabla-datos").innerHTML += '<tr><td>' + nuevoAmigo.nombre + ' - ' + nuevoAmigo.plata + '</td></tr>';
     
     let suma = 0;
+    let cantAmigos = listaAmigos.length;
 
-    for(let plataTotal of nuevoAmigo.plata){
-        suma += plataTotal;
-        document.getElementById("total").innerHTML += suma;
+    for(let amigo of listaAmigos){ 
+        suma += amigo.plata;
+        document.getElementById("total").innerHTML = suma;
+        document.getElementById("reparto").innerHTML = suma/cantAmigos;
     }
 }
